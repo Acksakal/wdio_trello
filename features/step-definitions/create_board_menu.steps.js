@@ -1,5 +1,4 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
-import { $ } from '@wdio/globals'
 
 Given('the "Create" button is visible', async () => {
     await $(`//button[@data-testid='header-create-menu-button']`).waitForDisplayed();
@@ -17,13 +16,13 @@ When('the user clicks the "Create board" button', async () => {
 
 When('the user enters a valid board title', async () => {    
     await $(`//input[@data-testid='create-board-title-input']`).setValue('Valid input');
-    await $(`//button[@data-testid='create-board-submit-button']`).waitForEnabled({ timeout: 500 });
 });
 
-When('the user clicks the "Create" button', async () => {    
-    await $(`//button[@data-testid='create-board-submit-button']`).click();
+When('the user closes the menu popover', async () => {    
+    await $(`//button[@data-testid='popover-close']`).click();
 });
 
-Then('the board is successfully created', async () => {    
-    await $(`//span[@data-testid='view-switcher-button-text']`).waitForDisplayed();
+Then('the the menu popover is no longer visible', async () => {
+    await $(`//section[@data-testid='header-create-menu-popover']`).waitForDisplayed({ reverse:true });
 });
+

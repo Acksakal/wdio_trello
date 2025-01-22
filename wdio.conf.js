@@ -1,3 +1,5 @@
+import LoginPage from "./features/pom/pages/login.page.js";
+
 export const config = {
     runner: 'local',
     specs: [
@@ -12,7 +14,7 @@ export const config = {
         {
             browserName: 'chrome',
             'goog:chromeOptions': {
-                args: ['headless', 'disable-gpu']
+                // args: ['headless', 'disable-gpu']
             }
         }],
     logLevel: 'silent',
@@ -22,7 +24,7 @@ export const config = {
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     framework: 'cucumber',
-    specFileRetries: 1,
+    // specFileRetries: 1,
 
     reporters: [['allure', {
         outputDir: 'allure-results',
@@ -46,34 +48,13 @@ export const config = {
     },
     
     before: async function () {
-        try {
-            await browser.emulate('userAgent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36')
-            await browser.maximizeWindow();
-
-            await browser.url('/');
-
-            const loginButton = await $(`//a[@data-uuid='MJFtCCgVhXrVl7v9HA7EH_login']`);
-            await loginButton.click();
-
-            const usernameInput = await $(`//input[@data-testid='username']`);
-            await usernameInput.setValue(process.env.LOGIN);
-
-            const loginSubmitButton = await $(`//button[@id='login-submit']`);
-            await loginSubmitButton.click();
-
-            const passwordInput = await $(`//input[@data-testid='password']`);
-            await passwordInput.waitForDisplayed();
-            await passwordInput.setValue(process.env.PASSWORD);
-
-            await loginSubmitButton.click();
-
-            const createMenuButton = await $(`//button[@data-testid='header-create-menu-button']`);
-            await createMenuButton.waitForDisplayed();
-
-            console.log('User logged in successfully in before hook!');
-        } catch (error) {
-            console.error('Error during before login setup:', error);
-            throw error;
-        }
+        const loginPage = new LoginPage()
+        await browser.emulate(
+            'userAgent',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+        )
+        await browser.maximizeWindow();
+        await loginPage.open('/');
+        await loginPage.login(process.env.LOGIN, process.env.PASSWORD);
     },
 }

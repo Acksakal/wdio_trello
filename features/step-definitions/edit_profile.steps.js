@@ -1,5 +1,4 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
-import { $ } from '@wdio/globals'
 
 Given('the profile icon is visible', async () => {
     await $(`//button[@data-testid='header-member-menu-button']`).waitForDisplayed();
