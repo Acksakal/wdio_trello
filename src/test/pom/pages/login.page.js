@@ -7,10 +7,10 @@ export default class LoginPage extends BasePage {
     get loginButton() {
         return `//a[@data-uuid='MJFtCCgVhXrVl7v9HA7EH_login']`;
     }
-    get usernameInput() {
+    get usernameInputField() {
         return `//input[@data-testid='username']`;
     }
-    get passwordInput() {
+    get passwordInputField() {
         return `//input[@data-testid='password']`;
     }
     get loginSubmitButton() {
@@ -20,13 +20,14 @@ export default class LoginPage extends BasePage {
         return `//button[@data-testid='header-create-menu-button']`;
     }
 
-    async login(username, password) {
-        await this.actions.click(this.loginButton);
-        await this.actions.setValue(this.usernameInput, username);
-        await this.actions.click(this.loginSubmitButton);
-        await this.actions.waitForDisplayed(this.passwordInput);
-        await this.actions.setValue(this.passwordInput, password);
-        await this.actions.click(this.loginSubmitButton);
-        await this.actions.waitForDisplayed(this.createMenuButton);
+    async logIn(username, password) {
+        await this.open('/');
+        await this.click(this.loginButton);
+        await this.setValue(this.usernameInputField, username);
+        await this.click(this.loginSubmitButton);
+        await this.waitForDisplayed(this.passwordInputField);
+        await this.setValue(this.passwordInputField, password);
+        await this.click(this.loginSubmitButton);
+        await this.waitForDisplayed(this.createMenuButton);
     }
 }

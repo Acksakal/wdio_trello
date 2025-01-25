@@ -1,23 +1,23 @@
-import LoginPage from "./features/pom/pages/login.page.js";
+import pages from "../test/pom/pages/page-factory.js";
 
 export const config = {
     runner: 'local',
     specs: [
-        './features/**/*.feature'
+        '../test/features/create.board.feature'
     ],
     exclude: [
         // 'path/to/excluded/files'
     ],
-    maxInstances: 2,
+    maxInstances: 1,
     
     capabilities: [
         {
             browserName: 'chrome',
             'goog:chromeOptions': {
-                // args: ['headless', 'disable-gpu']
+                args: ['disable-gpu', '--lang=en']
             }
         }],
-    logLevel: 'silent',
+    logLevel: 'debug',
     bail: 0,
     baseUrl: 'https://trello.com',
     waitforTimeout: 10000,
@@ -33,7 +33,7 @@ export const config = {
     }]],
 
     cucumberOpts: {
-        require: ['./features/step-definitions/*.js'],
+        require: ['src/test/steps/create.board.js'],
         backtrace: false,
         requireModule: [],
         dryRun: false,
@@ -48,13 +48,11 @@ export const config = {
     },
     
     before: async function () {
-        const loginPage = new LoginPage()
         await browser.emulate(
             'userAgent',
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
         )
         await browser.maximizeWindow();
-        await loginPage.open('/');
-        await loginPage.login(process.env.LOGIN, process.env.PASSWORD);
+        await pages('login').logIn(process.env.LOGIN, process.env.PASSWORD);
     },
 }

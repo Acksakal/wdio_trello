@@ -1,6 +1,7 @@
 {
   "name": "trello_wdio",
   "type": "module",
+  "description": "trello_trainee_testing",
   "devDependencies": {
     "@wdio/allure-reporter": "^9.5.0",
     "@wdio/cli": "^9.5.1",
@@ -10,9 +11,10 @@
     "wdio-wait-for": "^3.0.11"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "test": "wdio run ./src/config/wdio.conf.js"
   },
   "dependencies": {
+    "chai": "^5.1.2",
     "dotenv": "^16.4.7",
     "lru-cache": "^11.0.2"
   }
