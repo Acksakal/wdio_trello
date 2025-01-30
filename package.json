@@ -7,11 +7,14 @@
     "@wdio/cli": "^9.5.1",
     "@wdio/cucumber-framework": "^9.5.0",
     "@wdio/local-runner": "^9.5.1",
+    "@wdio/mocha-framework": "^9.6.4",
     "@wdio/spec-reporter": "^9.5.0",
-    "wdio-wait-for": "^3.0.11"
+    "mocha": "^11.1.0",
+    "supertest": "^7.0.0"
   },
   "scripts": {
-    "test": "wdio run ./src/config/wdio.conf.js"
+    "test": "wdio run src/config/wdio.conf.js",
+    "test:api": "npx mocha src/test/api/api.test.js --timeout 10000"
   },
   "dependencies": {
     "chai": "^5.1.2",

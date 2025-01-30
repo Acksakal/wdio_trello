@@ -11,18 +11,20 @@ export default class BasePage {
 
     async findElement(selector) {
         if (isSelectorTypeString(selector)) {
-            return $(selector);
+            const element = await $(selector).getElement();
+            return element;
         } else {
             throw new TypeError(`ERROR: Selector '${selector}' is of type '${typeof selector}' and must be a string`)
         }
     }
 
     async isElementDisplayed(selector) {
-        const element = await this.findElement(selector);
-        return element.isDisplayed();
+        const element = await this.findElement(selector);        
+        await element.waitForDisplayed();
+        return await element.isDisplayed();
     }
 
-    async waitForDisplayed(selector) {
+    async waitForElementDisplayed(selector) {
         const element = await this.findElement(selector);
         await element.waitForDisplayed();
         return element;
@@ -34,13 +36,13 @@ export default class BasePage {
     }
 
     async click(selector) {
-        const element = await this.waitForDisplayed(selector);
+        const element = await this.waitForElementDisplayed(selector);
         await element.waitForEnabled();
         await element.click();
     }
     
     async setValue(selector, value) {
-        const input = await this.waitForDisplayed(selector);
+        const input = await this.waitForElementDisplayed(selector);
         await input.setValue(value);
     }
     

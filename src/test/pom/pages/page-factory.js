@@ -1,16 +1,18 @@
 import LoginPage from "./login.page.js";
-import DashboardPage from "./dashboard.page.js";
+import HomePage from "./home.page.js";
 import BoardPage from "./board.page.js";
+import LandingPage from "./landing.page.js";
 
 const pages = {
+    landing: new LandingPage(),
     login: new LoginPage(),
-    dashboard: new DashboardPage(),
-    board: new BoardPage()
+    home: new HomePage(),
+    board: new BoardPage(),
 }
 
 /**
  * 
- * @param {string} 'login' | 'boards'
+ * @param {string} 'login' | 'board'
  * @returns { LoginPage, BoardsPage } instances
  */
 export default function getPage(name) {

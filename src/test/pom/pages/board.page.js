@@ -5,13 +5,12 @@ export default class BoardPage extends BasePage {
         super();
     }
 
-    get boardTitleHeader() {
-        return `//h1[@data-testid='board-name-display']`;
+    boardTitleHeader(title) {        
+        return `//h1[@data-testid='board-name-display' and normalize-space(text())='${title}']`;
     }
 
-    async isBoardTitleDisplayed() {
-        await this.waitForDisplayed(this.boardTitleHeader);
-        return await this.isElementDisplayed(this.boardTitleHeader);
+    isBoardTitleDisplayed(title) {   
+        return this.isElementDisplayed(this.boardTitleHeader(title));
     }
 
 }
