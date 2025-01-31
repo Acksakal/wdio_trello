@@ -1,6 +1,6 @@
 # Automated Testing for Trello Website
 
-This project was developed in 2024 as part of a Test Automation Bootcamp. It showcases a Test Automation Framework (TAF) using the Page Object Model (POM) for Trello, automating UI and API tests with modern tools and best practices.
+This project showcases a Test Automation Framework (TAF) using the Page Object Model (POM) for Trello, automating UI and API tests with modern tools and best practices.
 
 ## Features
 
