@@ -5,7 +5,7 @@ This project was developed in 2024 as part of a Test Automation Bootcamp. It sho
 ## Features
 
 - **E2E Testing** using [WebdriverIO](https://webdriver.io/)
-- **Behavior-Driven Development (BDD)** with [Cucumber](https://cucumber.io/)for readable, collaborative tests.
+- **Behavior-Driven Development (BDD)** with [Cucumber](https://cucumber.io/) for readable, collaborative tests.
 - **API Testing** with [SuperTest](https://github.com/visionmedia/supertest) to validate backend.
 
 ### Install Dependencies
@@ -15,12 +15,12 @@ npm install
 
 ### Run Tests
 
-To run the UI tests with spec reporter (NOTE: headless mode is enabled):
+To run the UI tests:
 
 ```bash
 npm run test:ui
 ```
-To run API tests with spec reporter:
+To run API tests:
 ```bash
 npm run test:api
 ```
