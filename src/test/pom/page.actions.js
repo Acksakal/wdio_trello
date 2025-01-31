@@ -1,50 +1,45 @@
-
-function isSelectorTypeString(selector) {
-    return typeof selector === 'string';
+function isSelectorTypeNotString(selector) {
+    return typeof selector !== 'string';
 }
 /**
  * Custom DOM-interacting methods with embedded waits to ensure
- * elements are ready before interaction, reducing redundancy in tests.
+ * elements are ready before interaction, reducing redundancy in tests. 
  */
 export default class PageActions {
-    async findElement(selector) {
-        if (isSelectorTypeString(selector)) {
-            const element = await $(selector);
-            return element;
-        } else {
+    async findElement(selector, reverse = false) {
+        if (isSelectorTypeNotString(selector)) {
             throw new TypeError(`ERROR: Selector '${selector}' is of type '${typeof selector}' and must be a string`)
         }
+        
+        await $(selector).waitForDisplayed({ reverse });        
+        return $(selector);
     }
 
     async isElementDisplayed(selector) {
         const element = await this.findElement(selector);        
-        await element.waitForDisplayed();
-        return await element.isDisplayed();
+        return element.isDisplayed();
     }
 
     async waitForElementDisplayed(selector) {
-        const element = await this.findElement(selector);
-        await element.waitForDisplayed();
-        return element;
+        return this.findElement(selector);
     }
 
     async waitUntilNotVisible(selector) {
-        const element = await this.findElement(selector);
-        await element.waitForDisplayed({ reverse: true });
+        await this.findElement(selector, true);
     }
 
     async click(selector) {
-        const element = await this.waitForElementDisplayed(selector);
+        const element = await this.findElement(selector);
         await element.waitForEnabled();
-        await element.click();
+        return element.click();
     }
     
     async setValue(selector, value) {
-        const input = await this.waitForElementDisplayed(selector);
-        await input.setValue(value);
+        const input = await this.findElement(selector);
+        return input.setValue(value);
     }
     
     async open(path) {        
-        await browser.url(path);
+        await browser.url(path);       
     }
 }

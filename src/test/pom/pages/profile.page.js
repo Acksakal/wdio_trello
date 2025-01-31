@@ -17,12 +17,12 @@ export default class ProfilePage extends BasePage {
         return `//div[contains(@class, 'a4ZvSL0pjeULBU') and @role='alert']`;
     }
 
-    async setValueToBioTextArea(bioText) {        
-        await this.actions.setValue(this.bioTextArea, bioText);
+    setValueToBioTextArea(bioText) {        
+        return this.actions.setValue(this.bioTextArea, bioText);
     }
 
-    async clickSaveButton() {   
-        await this.actions.click(this.saveButton);
+    clickSaveButton() {   
+        return this.actions.click(this.saveButton);
     }
 
     isSavedNotificationDisplayed() {

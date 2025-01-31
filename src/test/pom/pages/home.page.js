@@ -12,21 +12,17 @@ export default class HomePage extends BasePage {
     get startBoardCreationButton() {
         return `//li[@data-testid='create-board-tile']`;
     }
-    
-    async waitForHeaderCreateButtonVisible() {
-        await this.actions.waitForElementDisplayed(this.header.createMenuButton);
-    }  
 
-    async clickCreateBoardButton() {
-        await this.actions.click(this.startBoardCreationButton);
+    clickCreateBoardButton() {
+        return this.actions.click(this.startBoardCreationButton);
     }
 
-    async typeInBoardTitle(titleName) {
-        await this.actions.setValue(this.createBoardPopover.boardTitleInputField, titleName);
+    typeInBoardTitle(titleName) {
+        return this.actions.setValue(this.createBoardPopover.boardTitleInputField, titleName);
     }
 
-    async clickCreateBoardSubmitButton() {
-        await this.actions.click(this.createBoardPopover.submitBoardCreationButton);
+    clickCreateBoardSubmitButton() {
+        return this.actions.click(this.createBoardPopover.submitBoardCreationButton);
     }    
     
 }

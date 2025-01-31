@@ -20,16 +20,4 @@ export default class LoginPage extends LandingPage {
         await this.actions.setValue(this.passwordInputField, password);
         await this.actions.click(this.loginSubmitButton);
     }
-
-    async typeInUsernameEmail(usernameEmail) {
-        await this.actions.setValue(this.usernameEmailInputField, usernameEmail);
-    }
-
-    async typeInPassword(password) {
-        await this.actions.setValue(this.passwordInputField, password);
-    }
-
-    async clickLoginButton() {
-        await this.actions.click(this.loginSubmitButton);
-    }
 }

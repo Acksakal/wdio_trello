@@ -9,18 +9,6 @@ class Header {
         this.actions = new PageActions();
     }
     
-    get trelloHomeLink() {
-        return `//a[@aria-label='Back to home']`;
-    }
-
-    get workspacesButton() {
-        return `//button[@data-testid='workspace-switcher']`
-    }
-
-    get createMenuButton() {
-        return `//button[@data-testid='header-create-menu-button']`;
-    }
-    
     get searchInputField() {
         return `//input[@data-test-id='search-dialog-input']`;
     }
@@ -29,16 +17,16 @@ class Header {
         return `//button[@data-testid='header-member-menu-button']`;
     }
 
-    async waitForAccountButtonDisplayed() {
-        await this.actions.waitForElementDisplayed(this.accountButton);
+    waitForAccountButtonDisplayed() {
+        return this.actions.waitForElementDisplayed(this.accountButton);
     }
 
-    async clickAccountButton() {
-        await this.actions.click(this.accountButton);
+    clickAccountButton() {
+        return this.actions.click(this.accountButton);
     }
 
-    async clickProfileAndVisibilityLink() {
-        await this.actions.click(this.accountMenu.profileLink);
+    clickProfileAndVisibilityLink() {
+        return this.actions.click(this.accountMenu.profileLink);
     }
 }
 

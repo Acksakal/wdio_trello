@@ -9,7 +9,7 @@ export default class LandingPage extends BasePage {
         return `//a[@data-uuid='MJFtCCgVhXrVl7v9HA7EH_login']`;
     }
 
-    goToLoginPage() {
-        this.actions.click(this.loginLink);
+    async goToLoginPage() {
+        await this.actions.click(this.loginLink);
     }
 }
