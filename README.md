@@ -7,7 +7,7 @@ This project showcases a Test Automation Framework (TAF) using the Page Object M
 - **E2E Testing** using [WebdriverIO](https://webdriver.io/)
 - **Behavior-Driven Development (BDD)** with [Cucumber](https://cucumber.io/) for readable, collaborative tests.
 - **API Testing** with [SuperTest](https://github.com/visionmedia/supertest) and [Mocha](https://mochajs.org/) to validate backend.
-- **Assertion library** with [Chai](https://www.chaijs.com/).
+- **Assertion** using [Chai](https://www.chaijs.com/) lightweight library.
 
 ### Install Dependencies
 ```bash
