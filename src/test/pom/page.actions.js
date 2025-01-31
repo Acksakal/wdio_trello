@@ -15,17 +15,17 @@ export default class PageActions {
         return $(selector);
     }
 
-    async isElementDisplayed(selector) {
-        const element = await this.findElement(selector);        
-        return element.isDisplayed();
-    }
-
     waitForElementDisplayed(selector) {
         return this.findElement(selector);
     }
 
     waitUntilNotVisible(selector) {
         return this.findElement(selector, true);
+    }
+
+    async isElementDisplayed(selector) {
+        const element = await this.findElement(selector);        
+        return element.isDisplayed();
     }
 
     async click(selector) {
