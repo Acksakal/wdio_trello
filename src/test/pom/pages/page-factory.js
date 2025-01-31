@@ -15,7 +15,7 @@ const pages = {
 /**
  * 
  * @param {string} 'login' | 'board'
- * @returns { LoginPage, BoardsPage } instances
+ * @returns { LoginPage, BoardPage } instances
  */
 export default function getPage(name) {
     return pages[name.toLowerCase()];
