@@ -14,19 +14,19 @@ export default class HomePage extends BasePage {
     }
     
     async waitForHeaderCreateButtonVisible() {
-        await this.waitForElementDisplayed(this.header.createMenuButton);
+        await this.actions.waitForElementDisplayed(this.header.createMenuButton);
     }  
 
     async clickCreateBoardButton() {
-        await this.click(this.startBoardCreationButton);
+        await this.actions.click(this.startBoardCreationButton);
     }
 
     async typeInBoardTitle(titleName) {
-        await this.setValue(this.createBoardPopover.boardTitleInputField, titleName);
+        await this.actions.setValue(this.createBoardPopover.boardTitleInputField, titleName);
     }
 
     async clickCreateBoardSubmitButton() {
-        await this.click(this.createBoardPopover.submitBoardCreationButton);
+        await this.actions.click(this.createBoardPopover.submitBoardCreationButton);
     }    
     
 }

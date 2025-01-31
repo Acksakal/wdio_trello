@@ -13,7 +13,7 @@
     "supertest": "^7.0.0"
   },
   "scripts": {
-    "test": "wdio run src/config/wdio.conf.js",
+    "test:ui": "wdio run src/config/wdio.conf.js",
     "test:api": "npx mocha src/test/api/api.test.js --timeout 10000"
   },
   "dependencies": {

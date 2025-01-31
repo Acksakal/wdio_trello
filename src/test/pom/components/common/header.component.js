@@ -1,9 +1,14 @@
 import CreateBoardPopover from "../create.board.modal.component.js";
+import AccountMenuPopover from "../account.menu.component.js";
+import PageActions from "../../page.actions.js";
 
 export default class Header {
     constructor() {
         this.createBoardPopover = new CreateBoardPopover();
+        this.accountMenu = new AccountMenuPopover();
+        this.actions = new PageActions();
     }
+    
     get trelloHomeLink() {
         return `//a[@aria-label='Back to home']`;
     }
@@ -20,7 +25,19 @@ export default class Header {
         return `//input[@data-test-id='search-dialog-input']`;
     }
 
-    get avatarButton() {
+    get accountButton() {
         return `//button[@data-testid='header-member-menu-button']`;
+    }
+
+    async waitAccountButtonDisplayed() {
+        await this.actions.waitForElementDisplayed(this.accountButton);
+    }
+
+    async clickAccountButton() {
+        await this.actions.click(this.accountButton);
+    }
+
+    async clickProfileAndVisibilityLink() {
+        await this.actions.click(this.accountMenu.profileLink);
     }
 }

@@ -14,22 +14,22 @@ export default class LoginPage extends LandingPage {
         return `//button[@id='login-submit']`;
     }
     
-    async logIn(username, password) {
-        await this.setValue(this.usernameEmailInputField, username);
-        await this.click(this.loginSubmitButton);
-        await this.setValue(this.passwordInputField, password);
-        await this.click(this.loginSubmitButton);
+    async logIn(usernameEmail, password) {
+        await this.actions.setValue(this.usernameEmailInputField, usernameEmail);
+        await this.actions.click(this.loginSubmitButton);
+        await this.actions.setValue(this.passwordInputField, password);
+        await this.actions.click(this.loginSubmitButton);
     }
 
     async typeInUsernameEmail(usernameEmail) {
-        await this.setValue(this.usernameEmailInputField, usernameEmail);
+        await this.actions.setValue(this.usernameEmailInputField, usernameEmail);
     }
 
     async typeInPassword(password) {
-        await this.setValue(this.passwordInputField, password);
+        await this.actions.setValue(this.passwordInputField, password);
     }
 
     async clickLoginButton() {
-        await this.click(this.loginSubmitButton);
+        await this.actions.click(this.loginSubmitButton);
     }
 }

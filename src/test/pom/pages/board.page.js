@@ -10,7 +10,7 @@ export default class BoardPage extends BasePage {
     }
 
     isBoardTitleDisplayed(title) {   
-        return this.isElementDisplayed(this.boardTitleHeader(title));
+        return this.actions.isElementDisplayed(this.boardTitleHeader(title));
     }
 
 }

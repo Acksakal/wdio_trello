@@ -1,5 +1,6 @@
 
-export default class CreateBoardPopover {    
+
+export default class BoardPopover {    
     get boardTitleInputField() {
         return `//input[@data-testid='create-board-title-input']`;
     }

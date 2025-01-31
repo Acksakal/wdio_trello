@@ -1,21 +1,30 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
+import pages from "../pom/pages/page-factory.js";
+import Header from '../pom/components/common/header.component.js';
+import { expect } from 'chai';
+const header = new Header();
 
-Given('the profile icon is visible', async () => {
-    await $(`//button[@data-testid='header-member-menu-button']`).waitForDisplayed();
+Given(/^I see the 'Account button' on 'Header'$/, async () => {
+    await header.waitAccountButtonDisplayed();
 });
 
-When('the user enters their profile', async () => {    
-    await $(`//button[@data-testid='header-member-menu-button']`).click();
-    await $(`//a[@data-testid='account-menu-profile']`).waitForDisplayed();
-    await $(`//a[@data-testid='account-menu-profile']`).click();
-    await $(`//textarea[@id='bio']`).waitForDisplayed();   
+When(/^I click the 'Account button'$/, async () => {    
+    await header.clickAccountButton();
 });
 
-When('successfully edits their profile bio', async () => {    
-    await $(`//textarea[@id='bio']`).setValue('Valid input');  
-    await $(`//button[@type='submit']`).click();
+When(/^I click the 'Profile and visibility button'$/, async () => {  
+    await header.clickProfileAndVisibilityLink();
 });
 
-Then('a toast notification message "Saved" is displayed', async () => {    
-    await $(`//div[contains(@class, 'a4ZvSL0pjeULBU') and @role='alert']`).waitForDisplayed();
+When(/^I enter '([^"]*)' to the 'Bio textarea'$/, async (bioText) => { 
+    await pages('profile').setValueToBioTextArea(bioText);
+});
+
+When(/^I click the 'Save button'$/, async () => {  
+    await pages('profile').clickSaveButton();
+});
+
+Then(/^I should see a 'Saved toast notification' message$/, async () => {    
+    const isSavedNotificationDisplayed = await pages('profile').isSavedNotificationDisplayed();
+    expect(isSavedNotificationDisplayed).to.be.true;
 });

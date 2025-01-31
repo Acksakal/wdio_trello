@@ -10,6 +10,6 @@ export default class LandingPage extends BasePage {
     }
 
     goToLoginPage() {
-        this.click(this.loginLink);
+        this.actions.click(this.loginLink);
     }
 }

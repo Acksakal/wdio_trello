@@ -8,7 +8,7 @@ export const config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
-    maxInstances: 1,
+    maxInstances: 2,
     
     capabilities: [
         {
@@ -46,14 +46,18 @@ export const config = {
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },
-    
+
+    /**
+     * Log in before each scenario. This allows you not to 
+     * repeat the same "Background" steps for every feature 
+     */    
     before: async function () {
         await browser.emulate(
             'userAgent',
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
         )
         await browser.maximizeWindow();
-        pages('landing').open('/');
+        pages('landing').actions.open('/');
         pages('landing').goToLoginPage();
         pages('login').logIn(process.env.LOGIN, process.env.PASSWORD);
     },
