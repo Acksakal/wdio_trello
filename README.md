@@ -12,6 +12,7 @@ This project showcases a Test Automation Framework (TAF) using the Page Object M
 ```bash
 npm install
 ```
+After installing dependencies, set up your .env file with the required environment variables.
 
 ### Run Tests
 
