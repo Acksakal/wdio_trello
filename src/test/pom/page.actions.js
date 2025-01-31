@@ -20,12 +20,12 @@ export default class PageActions {
         return element.isDisplayed();
     }
 
-    async waitForElementDisplayed(selector) {
+    waitForElementDisplayed(selector) {
         return this.findElement(selector);
     }
 
-    async waitUntilNotVisible(selector) {
-        await this.findElement(selector, true);
+    waitUntilNotVisible(selector) {
+        return this.findElement(selector, true);
     }
 
     async click(selector) {
