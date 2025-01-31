@@ -1,11 +1,10 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import pages from "../pom/pages/page-factory.js";
-import Header from '../pom/components/common/header.component.js';
+import header from '../pom/components/common/header.component.js';
 import { expect } from 'chai';
-const header = new Header();
 
 Given(/^I see the 'Account button' on 'Header'$/, async () => {
-    await header.waitAccountButtonDisplayed();
+    await header.waitForAccountButtonDisplayed();
 });
 
 When(/^I click the 'Account button'$/, async () => {    

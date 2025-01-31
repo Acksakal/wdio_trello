@@ -2,7 +2,7 @@ import CreateBoardPopover from "../create.board.modal.component.js";
 import AccountMenuPopover from "../account.menu.component.js";
 import PageActions from "../../page.actions.js";
 
-export default class Header {
+class Header {
     constructor() {
         this.createBoardPopover = new CreateBoardPopover();
         this.accountMenu = new AccountMenuPopover();
@@ -29,7 +29,7 @@ export default class Header {
         return `//button[@data-testid='header-member-menu-button']`;
     }
 
-    async waitAccountButtonDisplayed() {
+    async waitForAccountButtonDisplayed() {
         await this.actions.waitForElementDisplayed(this.accountButton);
     }
 
@@ -41,3 +41,5 @@ export default class Header {
         await this.actions.click(this.accountMenu.profileLink);
     }
 }
+
+export default new Header();
