@@ -1,7 +1,7 @@
 import agent from './agent.js';
 
-const createApiRequest = (method, endpoint, data = null) => {
-  return agent[method.toLowerCase()](endpoint, data);
+const createApiRequest = (method, endpoint) => {
+  return agent[method.toLowerCase()](endpoint);
 };
 
 export const boardAPI = {

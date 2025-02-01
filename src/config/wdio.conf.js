@@ -14,7 +14,7 @@ export const config = {
         {
             browserName: 'chrome',
             'goog:chromeOptions': {
-                args: ['disable-gpu', '--lang=en']
+                args: ['disable-gpu', '--lang=en', 'headless']
             }
         }],
     logLevel: 'silent',
